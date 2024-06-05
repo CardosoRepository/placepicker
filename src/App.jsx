@@ -26,6 +26,11 @@ export function App() {
                 position.coords.longitude
             );
             setAvailablePlaces(sortedPlaces);
+        },
+        (error) => {
+            if (error.code === error.PERMISSION_DENIED) {
+                setAvailablePlaces(AVAILABLE_PLACES);
+            }
         });
     }, []);
 
